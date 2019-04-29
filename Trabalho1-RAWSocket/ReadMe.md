@@ -41,10 +41,56 @@ Cada um deles rececem um ou dois parametros de chamada vide modelos abaixo:
 FILE entrada_arquivo_texto = fopen(argv[1],"r");
 FILE entrada_arquivo_texto = fopen(argv[1],"r");
 int ch = fgetchar(entrada_arquivo_texto);
-  while( !eof(ch) ){
-    printf(
+int aux1, aux2;
+ while( !eof(ch) ){
     
+    aux1 = ((ch/16)%16);
+    if      ( 0<= aux1 && aux1<= 9) aux1 += '0';
+    else if (10<= aux1 && aux1<=15) aux1 += 'A';
+    else{
+      fprintf(stderr,"ERRO aux1 = %d\n",aux1);
+      Return ERROR;
+    }
+    
+    aux2 = ch%16;
+    if      ( 0<= aux2 && aux2<= 9) aux1 += '0';
+    else if (10<= aux2 && aux2<=15) aux1 += 'A';
+    else{
+      fprintf(stderr,"ERRO aux2 = %d\n",aux1);
+      Return ERROR;
+    }
+    
+    printf("%c%c",(char)aux1,(char)aux2);
   }
+```
 
-./HammingCode2Hex <entrada_arquivo_HammingCode.txt>
+```
+if(arcv >= 1){
+  FILE entrada_arquivo_texto = fopen(argv[1],"r");
+}else if(arcv == 2){
+  FILE entrada_arquivo_texto = fopen(argv[2],"r");
+}
+
+int ch = fgetchar(entrada_arquivo_texto);
+int aux1, aux2;
+ while( !eof(ch) ){
+    
+    aux1 = ((ch/16)%16);
+    if      ( 0<= aux1 && aux1<= 9) aux1 += '0';
+    else if (10<= aux1 && aux1<=15) aux1 += 'A';
+    else{
+      fprintf(stderr,"ERRO aux1 = %d\n",aux1);
+      Return ERROR;
+    }
+    
+    aux2 = ch%16;
+    if      ( 0<= aux2 && aux2<= 9) aux1 += '0';
+    else if (10<= aux2 && aux2<=15) aux1 += 'A';
+    else{
+      fprintf(stderr,"ERRO aux2 = %d\n",aux1);
+      Return ERROR;
+    }
+    
+    fprintf(stdout,"%c%c",(char)aux1,(char)aux2);
+  }
 ```
